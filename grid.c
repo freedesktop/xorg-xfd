@@ -1,4 +1,5 @@
 /*
+ * $XdotOrg: xc/programs/xfd/grid.c,v 1.1.4.2.4.1 2004/03/04 17:49:04 eich Exp $
  * $Xorg: grid.c,v 1.4 2001/02/09 02:05:41 xorgcvs Exp $
  *
  * 
@@ -33,6 +34,7 @@ in this Software without prior written authorization from The Open Group.
 #include <X11/StringDefs.h>
 #include <X11/Xaw/SimpleP.h>
 #include <X11/Xmu/Converters.h>
+#include <X11/Xos.h>
 #include "gridP.h"
 
 #ifdef XKB
