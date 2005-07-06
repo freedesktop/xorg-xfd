@@ -37,10 +37,8 @@ dist_man_MANS = \
 
 appdefaultdir = $(sysconfdir)/X11/app-defaults
 
-
 APPDEFAULTFILES = \
         Xfd
-
 
 $(APPDEFAULTFILES): %: %.ad
 	cp $< $@
