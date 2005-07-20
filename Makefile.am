@@ -21,8 +21,8 @@
 
 bin_PROGRAMS = xfd
 
-xfd_CFLAGS = $(DEP_CFLAGS) -DXRENDER
-xfd_LDADD = $(DEP_LIBS)
+xfd_CFLAGS = $(XFD_CFLAGS) -DXRENDER
+xfd_LDADD = $(XFD_LIBS)
 
 xfd_SOURCES =	\
         grid.c \
