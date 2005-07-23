@@ -40,7 +40,9 @@ appdefaultdir = $(sysconfdir)/X11/app-defaults
 APPDEFAULTFILES = \
         Xfd
 
-$(APPDEFAULTFILES): %: %.ad
+SUFFIXES = .ad
+
+.ad:
 	cp $< $@
 
 appdefault_DATA = $(APPDEFAULTFILES)
