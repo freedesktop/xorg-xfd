@@ -30,7 +30,7 @@ xfd_SOURCES =	\
         gridP.h \
         xfd.c
 
-dist_man_MANS = \
+dist_man1_MANS = \
         xfd.man
 
 # App default files  (*.ad)
