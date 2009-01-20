@@ -19,3 +19,7 @@ stamp-h1
 xfd
 xfd.1
 *~
+*.o
+xfd-*.tar.*
+ChangeLog
+tags

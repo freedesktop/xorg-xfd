@@ -26,11 +26,17 @@ AC_INIT(xfd,[1.0.1], [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg],x
 AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
 
+# Require xorg-macros: XORG_CWARNFLAGS, XORG_CHANGELOG
+m4_ifndef([XORG_MACROS_VERSION], [AC_FATAL([must install xorg-macros 1.2 or later before running autoconf/autogen])])
+XORG_MACROS_VERSION(1.2)
+
 AM_CONFIG_HEADER(config.h)
 
 AC_PROG_CC
 AM_PROG_CC_C_O
 AC_PROG_INSTALL
+
+XORG_CWARNFLAGS
 
 # Checks for pkg-config packages
 PKG_CHECK_MODULES(XAW, xaw7)
@@ -39,16 +45,21 @@ PKG_CHECK_MODULES(ADDITIONAL, freetype2 fontconfig xft)
 
 XFD_CFLAGS="$XAW_CFLAGS $ADDITIONAL_CFLAGS"
 XFD_LIBS="$XAW_LIBS $ADDITIONAL_LIBS"
-
+XFD_CFLAGS="$CWARNFLAGS $XFD_CFLAGS"
 AC_SUBST(XFD_CFLAGS)
 AC_SUBST(XFD_LIBS)
 
 
 PKG_CHECK_MODULES(APPDEFS, xt)
-appdefaultdir=$(pkg-config --variable=appdefaultdir xt)
+xt_appdefaultdir=$(pkg-config --variable=appdefaultdir xt)
+AC_ARG_WITH(appdefaultdir,
+	AC_HELP_STRING([--with-appdefaultdir=<pathname>],
+	  [specify directory for app-defaults files (default is autodetected)]),
+	[appdefaultdir="$withval"], [appdefaultdir="${xt_appdefaultdir}"])
 AC_SUBST(appdefaultdir)
 
 XORG_MANPAGE_SECTIONS
 XORG_RELEASE_VERSION
+XORG_CHANGELOG
 
 AC_OUTPUT([Makefile])

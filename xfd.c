@@ -46,7 +46,7 @@ in this Software without prior written authorization from The Open Group.
 #include <X11/extensions/Xrender.h>
 #endif
 
-char *ProgramName;
+static char *ProgramName;
 
 static XrmOptionDescRec xfd_options[] = {
 {"-fn",		"*grid.font",	XrmoptionSepArg,	(caddr_t) NULL },
@@ -90,7 +90,7 @@ static XtActionsRec xfd_actions[] = {
 
 static Atom wm_delete_window;
 
-Widget quitButton, prev16Button, prevButton, nextButton, next16Button;
+static Widget quitButton, prev16Button, prevButton, nextButton, next16Button;
 
 
 #define DEF_SELECT_FORMAT "character 0x%04x%02x (%u,%u) (%#o,%#o)"
@@ -256,7 +256,7 @@ main(int argc, char *argv[])
 	FcPatternGetString (xft->pattern, FC_STYLE, 0, &style);
 	size = 0;
 	FcPatternGetDouble (xft->pattern, FC_SIZE, 0, &size);
-	p = FcPatternBuild (0,
+	p = FcPatternBuild (NULL,
 			    FC_FAMILY, FcTypeString, family,
 			    FC_STYLE, FcTypeString, style,
 			    FC_SIZE, FcTypeDouble, size,
