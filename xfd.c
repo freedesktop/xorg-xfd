@@ -28,6 +28,10 @@ in this Software without prior written authorization from The Open Group.
  */
 /* $XFree86: xc/programs/xfd/xfd.c,v 1.8 2003/02/20 02:56:40 dawes Exp $ */
 
+#ifdef HAVE_CONFIG_H
+# include "config.h"
+#endif
+
 #include <X11/Intrinsic.h>
 #include <X11/StringDefs.h>
 #include <X11/Xos.h>
@@ -40,8 +44,12 @@ in this Software without prior written authorization from The Open Group.
 #include <X11/Xaw/Command.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <libintl.h>
-#include <locale.h>
+#ifdef USE_GETTEXT
+# include <X11/Xlocale.h>
+# include <libintl.h>
+#else
+# define gettext(a) (a)
+#endif
 #include "grid.h"
 #ifdef XRENDER
 #include <X11/Xft/Xft.h>
@@ -192,7 +200,7 @@ main(int argc, char *argv[])
 
     /* mainly for debugging */
     if ((domaindir = getenv ("TEXTDOMAINDIR")) == NULL) {
-	domaindir = "/usr/share/locale";
+	domaindir = LOCALEDIR;
     }
     bindtextdomain ("xfd", domaindir);
 

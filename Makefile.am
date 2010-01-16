@@ -85,3 +85,12 @@ ChangeLog:
 	$(CHANGELOG_CMD)
 
 dist-hook: ChangeLog INSTALL
+
+if USE_GETTEXT
+noinst_DATA = xfd.po
+
+xfd.po: $(xfd_SOURCES:%=$(srcdir)/%)
+	$(AM_V_GEN)xgettext -d xfd -n $(xfd_SOURCES:%=$(srcdir)/%)
+
+CLEANFILES += xfd.po
+endif

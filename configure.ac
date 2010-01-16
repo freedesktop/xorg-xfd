@@ -38,6 +38,25 @@ AC_PROG_CC
 AM_PROG_CC_C_O
 AC_PROG_INSTALL
 
+# Internationalization & localization support
+AC_SEARCH_LIBS([gettext], [intl], [USE_GETTEXT="yes"], [USE_GETTEXT="no"])
+AC_MSG_CHECKING([where to install localized messages])
+AC_ARG_WITH([localedir], AS_HELP_STRING([--with-localedir=<path>],
+        [Path to install message files in (default: datadir/locale)]),
+        [LOCALEDIR=${withval}], [LOCALEDIR=${datadir}/locale])
+AX_DEFINE_DIR([LOCALEDIR], [LOCALEDIR], [Location of translated messages])
+if test "x$LOCALEDIR" = "xno" -o "x$USE_GETTEXT" = "xno" ; then
+        AC_MSG_RESULT([nowhere])
+        USE_GETTEXT="no"
+else
+        AC_MSG_RESULT([$LOCALEDIR])
+fi
+
+if test "x$USE_GETTEXT" = "xyes" ; then
+        AC_DEFINE([USE_GETTEXT], 1,
+                  [Define to 1 if you want to use the gettext() function.])
+fi
+AM_CONDITIONAL(USE_GETTEXT, test "x$USE_GETTEXT" = "xyes")
 
 # Checks for pkg-config packages
 PKG_CHECK_MODULES(XAW, xaw7)
