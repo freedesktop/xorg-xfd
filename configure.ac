@@ -35,7 +35,6 @@ XORG_DEFAULT_OPTIONS
 AM_CONFIG_HEADER(config.h)
 
 AC_PROG_CC
-AM_PROG_CC_C_O
 AC_PROG_INSTALL
 
 # Internationalization & localization support
@@ -59,16 +58,7 @@ fi
 AM_CONDITIONAL(USE_GETTEXT, test "x$USE_GETTEXT" = "xyes")
 
 # Checks for pkg-config packages
-PKG_CHECK_MODULES(XAW, xaw7)
-
-PKG_CHECK_MODULES(ADDITIONAL, freetype2 fontconfig xft)
-
-XFD_CFLAGS="$XAW_CFLAGS $ADDITIONAL_CFLAGS"
-XFD_LIBS="$XAW_LIBS $ADDITIONAL_LIBS"
-XFD_CFLAGS="$CWARNFLAGS $XFD_CFLAGS"
-AC_SUBST(XFD_CFLAGS)
-AC_SUBST(XFD_LIBS)
-
+PKG_CHECK_MODULES(XFD, xaw7 freetype2 fontconfig xft xrender xmu)
 
 PKG_CHECK_MODULES(APPDEFS, xt)
 xt_appdefaultdir=`$PKG_CONFIG --variable=appdefaultdir xt`
