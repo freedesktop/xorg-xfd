@@ -196,6 +196,7 @@ main(int argc, char *argv[])
 				xfd_options, XtNumber(xfd_options),
 				&argc, argv, NULL, NULL, 0);
 
+#ifdef USE_GETTEXT
     textdomain("xfd");
 
     /* mainly for debugging */
@@ -203,6 +204,7 @@ main(int argc, char *argv[])
 	domaindir = LOCALEDIR;
     }
     bindtextdomain ("xfd", domaindir);
+#endif
 
     Resources[0].default_addr = gettext(DEF_SELECT_FORMAT);
     Resources[1].default_addr = gettext(DEF_METRICS_FORMAT);
