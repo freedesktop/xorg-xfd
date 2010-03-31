@@ -24,6 +24,8 @@ bin_PROGRAMS = xfd
 AM_CFLAGS = $(XFD_CFLAGS) $(CWARNFLAGS) -DXRENDER -D_BSD_SOURCE
 xfd_LDADD = $(XFD_LIBS)
 
+ACLOCAL_AMFLAGS = -I m4
+
 xfd_SOURCES =	\
         grid.c \
         grid.h \
