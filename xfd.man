@@ -190,7 +190,7 @@ character does not exist.  The default is "no such character
 0x%02x%02x (%u,%u) (%#o,%#o)".  The arguments that will come after the
 format string are the same as for the \fBselectFormat\fP resource.
 .SH "SEE ALSO"
-X(__miscmansuffix__), xlsfonts(1), xrdb(1), xfontsel(1), fc-list(1),
+X(__miscmansuffix__), xlsfonts(__appmansuffix__), xrdb(__appmansuffix__), xfontsel(__appmansuffix__), fc-list(__appmansuffix__),
 fonts.conf(__filemansuffix__),
 .I "X Logical Font Description Conventions"
 .SH "BUGS"
