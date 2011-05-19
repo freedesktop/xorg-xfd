@@ -542,10 +542,7 @@ XmuCvtStringToXftFont(Display *dpy,
 				XScreenNumberOfScreen (screen),
 				name);
 	if (!font)
-	{
 	    XtDisplayStringConversionWarning(dpy, (char *) fromVal->addr, XtRXftFont);
-	    return False;
-	}
     }
     donestr (XftFont *, font, XtRXftFont);
 }
