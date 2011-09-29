@@ -185,7 +185,7 @@ main(int argc, char *argv[])
     XftFont *xft;
 #endif
     char *fontname;
-    char *domaindir;
+    const char *domaindir;
     long minn, maxn;
 
     XtSetLanguageProc(NULL, NULL, NULL);
