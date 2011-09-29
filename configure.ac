@@ -58,7 +58,7 @@ fi
 AM_CONDITIONAL(USE_GETTEXT, test "x$USE_GETTEXT" = "xyes")
 
 # Checks for pkg-config packages
-PKG_CHECK_MODULES(XFD, xaw7 freetype2 fontconfig xft xrender xmu)
+PKG_CHECK_MODULES(XFD, xaw7 fontconfig xft xrender xmu)
 
 PKG_CHECK_MODULES(APPDEFS, xt)
 xt_appdefaultdir=`$PKG_CONFIG --variable=appdefaultdir xt`
