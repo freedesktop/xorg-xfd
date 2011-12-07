@@ -24,7 +24,6 @@ dnl Process this file with autoconf to create configure.
 AC_PREREQ([2.60])
 AC_INIT([xfd],[1.1.0],
 	[https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], [xfd])
-AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([foreign dist-bzip2])
 AM_MAINTAINER_MODE
 
@@ -43,7 +42,7 @@ AC_MSG_CHECKING([where to install localized messages])
 AC_ARG_WITH([localedir], AS_HELP_STRING([--with-localedir=<path>],
         [Path to install message files in (default: datadir/locale)]),
         [LOCALEDIR=${withval}], [LOCALEDIR=${datadir}/locale])
-AX_DEFINE_DIR([LOCALEDIR], [LOCALEDIR], [Location of translated messages])
+AC_SUBST([LOCALEDIR])
 if test "x$LOCALEDIR" = "xno" -o "x$USE_GETTEXT" = "xno" ; then
         AC_MSG_RESULT([nowhere])
         USE_GETTEXT="no"
