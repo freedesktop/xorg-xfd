@@ -72,7 +72,7 @@ static XrmOptionDescRec xfd_options[] = {
 static void usage(void);
 static void SelectChar(Widget w, XtPointer closure, XtPointer data);
 static void do_quit(Widget w, XEvent *event, String *params,
-		    Cardinal *num_params);
+		    Cardinal *num_params) _X_NORETURN;
 static void change_page(int page);
 static void set_button_state(void);
 static void do_prev(Widget w, XEvent *event, String *params,
